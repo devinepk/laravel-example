@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Vue To-Do List</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    </head>
+    <body class="container">
+
+        <h1 class="mt-5 mb-3">Vue To-Do List</h1>
+
+        <div id="app">
+
+            <div class="input-group mb-3">
+                <input
+                    v-on:keyup.enter="addNewTodo"
+                    type="text"
+                    placeholder="Add a to-do..."
+                    v-model="newTodoText"
+                >
+            </div>
+
+            <p v-if="todos.length == 0">Nothing to do? Great! Have fun!</p>
+
+            <ul class="list-group">
+                <li class="list-group-item" v-for="(todo, index) in todos" v-on:click="removeTodo(index);">
+                    <i class="far fa-trash-alt mr-3 text-danger"></i> @{{ todo }}
+                </li>
+            </ul>
+
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="/js/main.js"></script>
+
+    </body>
+</html>
