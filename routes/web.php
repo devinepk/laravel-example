@@ -22,3 +22,7 @@ Route::get('/todo', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('lists', 'TodolistController');
+
+// Route::get('/lists', "TodolistController@index");
