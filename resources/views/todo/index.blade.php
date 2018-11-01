@@ -1,47 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Vue To-Do List</title>
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-        <link rel="stylesheet" href="/css/app.css" type="text/css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    </head>
-    <body class="container">
+@extends('layouts.app')
 
-        <h1 class="mt-5 mb-3">Vue To-Do List</h1>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Laravel To-Do List</div>
 
-        <div id="app" v-cloak>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-            <p class="purple">I want to be purple, too!</p>
+                    <div id="app" v-cloak>
 
+                        <div class="input-group mb-3">
+                            <input
+                                v-on:keyup.enter="addNewTodo"
+                                type="text"
+                                placeholder="Add a to-do..."
+                                v-model="newTodoText"
+                            >
+                        </div>
 
-            <example-component></example-component>
+                        <p v-if="todos.length == 0">Nothing to do? Great! Have fun!</p>
 
-            <div class="input-group mb-3">
-                <input
-                    v-on:keyup.enter="addNewTodo"
-                    type="text"
-                    placeholder="Add a to-do..."
-                    v-model="newTodoText"
-                >
+                        <ul class="list-group">
+                            <li class="list-group-item" v-for="(todo, index) in todos" v-on:click="removeTodo(index);">
+                                <i class="far fa-trash-alt mr-3 text-danger"></i> @{{ todo }}
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
             </div>
-
-            <p v-if="todos.length == 0">Nothing to do? Great! Have fun!</p>
-
-            <ul class="list-group">
-                <li class="list-group-item" v-for="(todo, index) in todos" v-on:click="removeTodo(index);">
-                    <i class="far fa-trash-alt mr-3 text-danger"></i> @{{ todo }}
-                </li>
-            </ul>
-
         </div>
+    </div>
+</div>
 
-        <p class="purple">I want to be purple, too!</p>
-
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-        <script src="/js/app.js"></script>
-
-    </body>
-</html>
+@endsection
