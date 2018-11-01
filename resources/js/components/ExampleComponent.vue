@@ -6,7 +6,7 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <span class="purple">I'm an example component.</span>
                     </div>
                 </div>
             </div>
@@ -21,3 +21,10 @@
         }
     }
 </script>
+
+<style scoped>
+    .purple {
+        background-color: #5f4b8b;
+        color: white;
+    }
+</style>

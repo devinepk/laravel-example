@@ -12,7 +12,12 @@
 
         <h1 class="mt-5 mb-3">Vue To-Do List</h1>
 
-        <div id="todo">
+        <div id="app" v-cloak>
+
+            <p class="purple">I want to be purple, too!</p>
+
+
+            <example-component></example-component>
 
             <div class="input-group mb-3">
                 <input
@@ -33,6 +38,7 @@
 
         </div>
 
+        <p class="purple">I want to be purple, too!</p>
 
         <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
         <script src="/js/app.js"></script>
