@@ -13905,8 +13905,29 @@ window.Vue = __webpack_require__(36);
 
 Vue.component('example-component', __webpack_require__(39));
 
-var app = new Vue({
-  el: '#app'
+// const app = new Vue({
+//     el: '#app'
+// });
+
+
+new Vue({
+    el: "#todo",
+    data: {
+        newTodoText: '',
+        todos: []
+    },
+    methods: {
+        addNewTodo: function addNewTodo() {
+            // Add the new to-do item to todos
+            this.todos.push(this.newTodoText);
+            // Clear out text in input box
+            this.newTodoText = '';
+        },
+        removeTodo: function removeTodo(index) {
+            // Remove item from todos array
+            this.todos.splice(index, 1);
+        }
+    }
 });
 
 /***/ }),

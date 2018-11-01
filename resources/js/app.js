@@ -17,6 +17,28 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-const app = new Vue({
-    el: '#app'
+// const app = new Vue({
+//     el: '#app'
+// });
+
+
+
+new Vue({
+    el: "#todo",
+    data: {
+        newTodoText: '',
+        todos: []
+    },
+    methods: {
+        addNewTodo: function () {
+            // Add the new to-do item to todos
+            this.todos.push(this.newTodoText);
+            // Clear out text in input box
+            this.newTodoText = '';
+        },
+        removeTodo: function (index) {
+            // Remove item from todos array
+            this.todos.splice(index, 1);
+        }
+    }
 });
